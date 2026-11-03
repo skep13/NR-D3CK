@@ -1,10 +1,24 @@
 # NR-D3CK
-a portable cyberdeck that has built in sensors and tracks live plane data as well as displays a live radio spectrum and planes positions
 
-this is a portable device built with a rpi 5 and a touchscreen in a fully 3d printed case it picks up radio signals from planes overhead and then shows them on a live map, it will also show the radio spectrum nearby wifi and bluetooth connections and statistics such as temperature, humidity, and C02 levels, this will basically make radio signals visible as well as provide other useful information
+this is a cyberdeck inspired by cyberpunk edgerunners with a ai  inspired by capri and other blackwall ai, this isnt a copy of the show as it is completly our own fiction with the model having a custom design and personality all tuned on our own server. our own rendition of bringing a ai contruct to life by giving it, its own hardware. the cyberdeck will have a custom esp32 style board with a sd card attachement used for storage of the ai model and once the shard is entered into the deck the construct comes to life
 
-it features a live plane map with details such as callsigns altitude speed and direction. wifi and bluetooth scanning. sensors and most importantly works completly offline
 
-it works as a plane constantly broadcasts its position speed and id by radio on high frequency and our own decoder finds each message in the raw signal and checks it, a esp32s3 with a custom antenna and software will scan wifi and bluetooth anf send the results to the pi and then the screen will display all of it 
+# what is it
 
-Hardware used will be a pi 5 a toucscreen or just normal screen a sd card esp32s3 and various sensors a 3d printer will be needed for the case as well as a battery pack to power the pi and the esp32s3
+NR is a cyberdeck that will bring ai closer to feeling alive with how a person can interact with it
+
+# why
+
+we made it as we have worked with ai servers and other hardware in the past including at competition level, also the way ai is going id rather it not be a killer robot due to being asked for a capital of a country everyday
+
+# does it actually work
+
+surprisingly im unsure so far this is literally just documentation for the idea before it leaves my mind
+
+# Designs ~ evan
+
+# pcb design ~ oliver (this will be inside the shard)
+
+for parts see bom.csv 
+
+# demo (only hear if this whole thing works)
