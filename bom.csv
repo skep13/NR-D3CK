@@ -1,7 +1,7 @@
 item,quantity,status,cost (GBP£),link,notes
 raspberry pi 5 8GB,1,have,0,https://www.raspberrypi.com/products/raspberry-pi-5/,main computer for deck
 pi touch display 7in,1,have,0,https://www.raspberrypi.com/products/touch-display-2/,screen for hologram
-pi 5 heatsink,1,buy,3,link,keeps pi cool since the big cooler doesnt fit
+pi 5 heatsink,1,buy,3,https://thepihut.com/products/low-profile-heatsink-for-raspberry-pi-5/,keeps pi cool since the big cooler doesnt fit
 27W USBC power supply,1,buy,12,https://www.raspberrypi.com/products/27w-power-supply/,gives the device power
 32gb sd card,1,have,0,,pi os 64bit
 beelink ser9 or any other mini pc with enough ram to run a local model,1,have,0,runs model and speech server
