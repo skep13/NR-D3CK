@@ -1,0 +1,14 @@
+item,quantity,status,cost (GBP£),link,notes
+raspberry pi 5 8GB,1,have,0,https://www.raspberrypi.com/products/raspberry-pi-5/,main computer for deck
+pi touch display 7in,1,have,0,https://www.raspberrypi.com/products/touch-display-2/,screen for hologram
+pi 5 heatsink,1,buy,3,link,keeps pi cool since the big cooler doesnt fit
+27W USBC power supply,1,buy,12,https://www.raspberrypi.com/products/27w-power-supply/,gives the device power
+32gb sd card,1,have,0,,pi os 64bit
+beelink ser9 or any other mini pc with enough ram to run a local model,1,have,0,runs model and speech server
+cat5e cable however long,1,have,4,ethernet from mini pc to pi as china blocks my tailscale connection
+rj45 connector cat5e,10,have,3,for making ethernet cable
+microphone,1,buy,20-25,mic for talking to llm
+max98357a amp,1,buy,5,amp for speaker
+speaker,1,buy,15-30,speaker for audio from voice
+keyboard,1,have,0,setup and typing for when its too loud to speak
+esp32s3 or custom pcb,1-0,have and need,0-15,runs sensor and led strip in the shard
