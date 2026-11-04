@@ -1,6 +1,6 @@
 # NR-D3CK
 
-this is a cyberdeck inspired by cyberpunk edgerunners with a ai  inspired by capri and other blackwall ai, this isnt a copy of the show as it is completly our own fiction with the model having a custom design and personality all tuned on our own server. our own rendition of bringing a ai contruct to life by giving it, its own hardware. the cyberdeck will have a custom esp32 style board with a sd card attachement used for storage of the ai model and once the shard is entered into the deck the construct comes to life
+this is a cyberdeck inspired by cyberpunk edgerunners with a ai inspired by capri and other blackwall ai, this isnt a copy of the show as it is completly our own fiction with the model having a custom design and personality all tuned on our own server. our own rendition of bringing a ai contruct to life by giving it, its own hardware. the cyberdeck will have a custom esp32 style board with a sd card attachement used for storage of the ai model and once the shard is entered into the deck the construct comes to life
 
 
 # what is it
