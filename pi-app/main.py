@@ -1,12 +1,15 @@
 import argparse
 import pygame
 from display import Display, FPS
+from ancontrol import AnimationControl
 
 KEYS = {
     pygame.K_1: "idle",
     pygame.K_2: "listening",
     pygame.K_3: "talking",
     pygame.K_4: "boot",
+    pygame.K_5: "thinking",
+    pygame.K_6: "error",
 }
 
 
@@ -16,7 +19,7 @@ def main():
     args = parser.parse_args()
 
     display = Display(fullscreen=args.fullscreen)
-    display.set_state("boot")
+    animation = AnimationControl(display)
     clock = pygame.time.Clock()
 
     running = True
@@ -28,9 +31,10 @@ def main():
                 if event.key == pygame.K_ESCAPE:
                     running = False
                 elif event.key in KEYS:
-                    display.set_state(KEYS[event.key])
+                    animation.set_state(KEYS[event.key])
 
         display.update(pygame.time.get_ticks())
+        animation.update()
         clock.tick(FPS)
 
     pygame.quit()

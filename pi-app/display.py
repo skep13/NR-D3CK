@@ -4,7 +4,7 @@ import pygame
 from pygame.surface import Surface
 
 ANIM_DIR = Path(__file__).parent / "animations"
-STATES = ["idle", "listening", "talking", "boot"]
+STATES = ["idle", "listening", "talking", "boot", "thinking", "error"]
 FPS = 30
 FRAME_MS = 1000 // 12  # animations at 12 fps
 
@@ -15,6 +15,8 @@ PLACEHOLDER: dict[str, tuple[int, int, int]] = {
     "listening": (0, 230, 255),
     "talking": (255, 40, 60),
     "boot": (240, 250, 255),
+    "thinking": (255, 255, 255),
+    "error": (100, 110, 50),
 }
 
 
@@ -59,6 +61,9 @@ class Display:
             self.state = state
             self.index = 0
             self.last_step = pygame.time.get_ticks()
+
+    def get_state(self) -> str:
+        return self.state
 
     def update(self, now: int) -> None:
         frames = self.frames[self.state]
