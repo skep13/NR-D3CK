@@ -1,0 +1,48 @@
+pin layouts for testing components
+
+power wire uno 5v on left rail +
+      wire uno GND left rail -
+      wire left + right plus +
+      wire left - right -
+
+ultrasonic HC-SR04 j1-j4
+        wire f1 right +
+        wire f2 uno 7
+        wire f3 uno 8
+        wire f4 right -
+
+heartbeat motor PN2222 EBC in e25 - e26 - e27
+        wire a25 left -
+        1 k resistor d26 - g26
+        wire j26 uno 10
+        motor lead 1 - a27
+        motor lead 2 - left + rail
+        diode b27 left + rail stripe on +
+
+buzzer passive + g32  other in g34
+        wire j32 uno 11
+        wire j34 right -
+
+button e38 e40 f38 f40
+       wire a38 uno2
+       wire a40 left -
+
+tilt switch c44 c46
+       wire a44 uno4
+       wire a46 left -
+
+servo 
+
+brown right -
+red right +
+orange uno9
+
+uno pins used
+
+5v /gnd left rail
+2 button a38
+4 tilt switch a44
+7-8 ultrasonic trig f2 f3
+9 servo orange
+10 motor transistor j26
+11 buzzer j32
