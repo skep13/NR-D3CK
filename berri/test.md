@@ -1,0 +1,1 @@
+after testing the system prompt it returned with pronouncing its name as b3rri this is because tts was using b3rri so i changed i to always write its name as berri 
