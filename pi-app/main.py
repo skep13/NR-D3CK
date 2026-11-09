@@ -1,4 +1,6 @@
 import argparse
+from typing import cast
+
 import pygame
 from display import Display, FPS
 from ancontrol import AnimationControl
@@ -13,12 +15,13 @@ KEYS = {
 }
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--fullscreen", action="store_true")
+    _ = parser.add_argument("--fullscreen", action="store_true")
     args = parser.parse_args()
+    fullscreen = cast(bool, args.fullscreen)
 
-    display = Display(fullscreen=args.fullscreen)
+    display = Display(fullscreen=fullscreen)
     animation = AnimationControl(display)
     clock = pygame.time.Clock()
 
@@ -28,14 +31,15 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
+                key = cast(int, event.key)
+                if key == pygame.K_ESCAPE:
                     running = False
-                elif event.key in KEYS:
-                    animation.set_state(KEYS[event.key])
+                elif key in KEYS:
+                    _ = animation.set_state(KEYS[key])
 
         display.update(pygame.time.get_ticks())
         animation.update()
-        clock.tick(FPS)
+        _ = clock.tick(FPS)
 
     pygame.quit()
 

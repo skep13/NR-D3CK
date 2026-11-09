@@ -22,7 +22,7 @@ PLACEHOLDER: dict[str, tuple[int, int, int]] = {
 
 class Display:
     def __init__(self, fullscreen: bool = False, flip_x: bool = False, flip_y: bool = False):
-        pygame.init()
+        _ = pygame.init()
         if fullscreen:
             # screen size 720 x 1280
             self.screen: Surface = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
@@ -36,9 +36,9 @@ class Display:
         self.flip_y: bool = flip_y
         self.frames: dict[str, list[Surface]] = {state: self._load(state) for state in STATES}
 
-        self.state = "idle"
-        self.index = 0
-        self.last_step = 0
+        self.state: str = "idle"
+        self.index: int = 0
+        self.last_step: int = 0
 
     def _load(self, state: str) -> list[Surface]:
         """Load animations/<state>/*.png in name order, scaled to the screen."""
