@@ -7,7 +7,7 @@ ANIM_DIR = Path(__file__).parent / "animations"
 STATES = ["idle", "listening", "talking", "boot", "thinking", "error"]
 FPS = 30
 FRAME_MS = 1000 // 12  # animations at 12 fps
-
+BOOT_FALLBACK_MS = 3000
 
 # placeholder colours when no animation frames
 PLACEHOLDER: dict[str, tuple[int, int, int]] = {
@@ -39,6 +39,7 @@ class Display:
         self.state: str = "idle"
         self.index: int = 0
         self.last_step: int = 0
+        self.boot_started: int = 0
 
     def _load(self, state: str) -> list[Surface]:
         """Load animations/<state>/*.png in name order, scaled to the screen."""
@@ -61,6 +62,8 @@ class Display:
             self.state = state
             self.index = 0
             self.last_step = pygame.time.get_ticks()
+        if state == "boot":
+            self.boot_started = pygame.time.get_ticks()
 
     def get_state(self) -> str:
         return self.state
@@ -74,6 +77,12 @@ class Display:
             if self.index >= len(frames):
                 if self.state == "boot":
                     # boot plays once, then falls back to idle
+                    self.set_state("idle")
+                if (
+                    self.state == "boot"
+                    and not self.frames["boot"]
+                    and now - self.boot_started >= BOOT_FALLBACK_MS
+                ):
                     self.set_state("idle")
                     frames = self.frames[self.state]
                 self.index = 0
