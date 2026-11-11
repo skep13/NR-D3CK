@@ -69,6 +69,12 @@ class Display:
         return self.state
 
     def update(self, now: int) -> None:
+        if (
+              self.state == "boot"
+            and not self.frames["boot"]
+            and now - self.boot_started >= BOOT_FALLBACK_MS
+             ):
+                    self.set_state("idle")
         frames = self.frames[self.state]
 
         if frames and now - self.last_step >= FRAME_MS:
@@ -78,16 +84,11 @@ class Display:
                 if self.state == "boot":
                     # boot plays once, then falls back to idle
                     self.set_state("idle")
-                if (
-                    self.state == "boot"
-                    and not self.frames["boot"]
-                    and now - self.boot_started >= BOOT_FALLBACK_MS
-                ):
-                    self.set_state("idle")
                     frames = self.frames[self.state]
                 self.index = 0
 
         if frames:
+            _ = self.screen.fill((0, 0, 0))
             _ = self.screen.blit(frames[self.index], (0, 0))
         else:
             _ = self.screen.fill(PLACEHOLDER[self.state])
