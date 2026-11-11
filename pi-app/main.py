@@ -15,6 +15,17 @@ KEYS = {
     pygame.K_6: "error",
 }
 
+WORDS_PER_SECOND = 2
+
+def read_terminal(q):
+
+    #runs in background so no freeze input
+
+    while True:
+        try:
+            q.put(input().strip())
+        except EOFError:
+            return
 
 def main():
     parser = argparse.ArgumentParser()
@@ -26,7 +37,7 @@ def main():
     brain = Brain()
     clock = pygame.time.Clock()
     typed = queue.Queue()
-    threading.Thread(target=read_terminal args=(typed,) daemon=True).start()
+    threading.Thread(target=read_terminal, args=(typed,), daemon=True).start()
     print("type message press enter")
 
     woke_up = False
@@ -43,28 +54,29 @@ def main():
                     running = False
                 elif event.key in KEYS:
                     animation.set_state(KEYS[event.key])
-            if animation.boot_complete and not woke_up:
-                woke_up = True
-                if brain.ask_async("[wake up]"):
-                    animation.think()
 
-            try:
-                text = typed.get_nowait()
-            except queue.Empty:
-                text = None
-            if text and woke_up:
-                if brain.ask_async(text):
-                    animation.think()
-                else:
-                    print("(berri still thinkinhg)")
+        if animation.boot_complete and not woke_up:
+            woke_up = True
+            if brain.ask_async("[waking up]"):
+                animation.think()
 
-            result = brain.get_reply()
-            if result is not None:
-                reply = result ["reply"]
-            if reply is none:
-                animation.error
+        try:
+            text = typed.get_nowait()
+        except queue.Empty:
+            text = None
+        if text and woke_up:
+            if brain.ask_async(text):
+                animation.think()
             else:
-                print("berri", reply)
+                 print("(berri still thinking)")
+
+        result = brain.get_reply()
+        if result is not None:
+            reply = result["reply"]
+            if reply is None:
+                animation.error()
+            else:
+                print("berri:", reply)
                 animation.talk()
                 seconds = len(reply.split()) / WORDS_PER_SECOND
                 talk_until = now + int(seconds * 1000)
